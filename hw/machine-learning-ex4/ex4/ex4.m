@@ -230,5 +230,25 @@ pause;
 pred = predict(Theta1, Theta2, X);
 
 fprintf('\nTraining Set Accuracy: %f\n', mean(double(pred == y)) * 100);
+pause;
 
+%%================== Part 11:Visualization========================
+% Randomly select 100 data points to display
+while (1)
+    sel = randperm(size(X, 1));
+    sel = sel(1);
 
+    displayData(X(sel, :));
+    X_visual=X(sel, :);
+    Y_visual=y(sel);
+    pred = predict(Theta1, Theta2, X_visual);
+    if pred==10
+        pred=0;
+    end
+    if Y_visual==10
+        Y_visual=0;
+    end
+    fprintf('Predicted value: %d\tActual value:%d\n', pred,Y_visual);
+    pause;
+end
+    
